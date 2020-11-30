@@ -1,0 +1,71 @@
+<body>
+
+    <div class="d-flex" id="wrapper" [ngClass]="{'toggled': toggled}">
+  
+      <!-- Sidebar -->
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading text-white">Sisain-Admin </div>
+        <div class="list-group list-group-flush">
+          <a 
+            [routerLink]="['/dashboard']"  
+            class="list-group-item list-group-item-action bg-light">
+            <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp; Dashboard
+          </a>
+          <div 
+            class="bg-light" style="margin-left: 1rem; color: rgb(14, 2, 29);">
+            <i class="fa fa-cogs" aria-hidden="true"></i>&nbsp; Manage 
+        </div>
+          <a 
+            [routerLink]="['/manage-user']" 
+            class="list-group-item list-group-item-action bg-light child">
+            <i class="fa fa-user" aria-hidden="true"></i>&nbsp; User
+          </a>
+          <a 
+            [routerLink]="['/manage-product']" 
+            class="list-group-item list-group-item-action bg-light child">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp; Product
+          </a>
+          <a 
+            [routerLink]="['/manage-transaction']" 
+            class="list-group-item list-group-item-action bg-light child">
+            <i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp; Transaction
+          </a>
+          <a 
+            [routerLink]="['/manage-expedition']" 
+            class="list-group-item list-group-item-action bg-light child">
+            <i class="fa fa-truck" aria-hidden="true"></i>&nbsp; Expedition
+          </a>
+          <a 
+          [routerLink]="['/manage-category']" 
+          class="list-group-item list-group-item-action bg-light child">
+          <i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp; Category
+        </a>
+        </div>
+      </div>
+      <!-- /#sidebar-wrapper -->
+  
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+  
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+          <button class="btn-toggle" id="menu-toggle" (click)="onToggle()"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></button>
+  
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" (click)="signOut()">Sign Out</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+  
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </body>

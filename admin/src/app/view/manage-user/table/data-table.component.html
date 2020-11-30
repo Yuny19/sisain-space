@@ -1,0 +1,88 @@
+<div class="card">
+  <div class="card-header">
+    <div class="clearfix">
+      <span class="float-left font-weight-bold mt-2">
+        Table User
+      </span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <ngx-datatable
+          #table
+          (page)="getUser($event.offset + 1)"
+          (sort)="onSort($event)"
+          [columnMode]="ColumnMode.force"
+          [count]="totalElements"
+          [externalPaging]="true"
+          [externalSorting]="true"
+          [footerHeight]="50"
+          [headerHeight]="50"
+          [limit]="page.limit"
+          [loadingIndicator]="loadingIndicator"
+          [offset]="offset"
+          [rowHeight]="50"
+          [rows]="rows"
+          [scrollbarH]="true"
+          class="material striped"
+        >
+  
+          <!-- Name -->
+          <ngx-datatable-column
+            [draggable]="false"
+            [sortable]="true"
+            name="Name"
+            prop="name"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <!-- Email -->
+          <ngx-datatable-column
+            [cellClass]="'d-none d-md-inline'"
+            [draggable]="false"
+            [headerClass]="'d-none d-md-inline'"
+            [sortable]="true"
+            name="Email"
+            prop="email"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <!-- Role -->
+          <ngx-datatable-column
+            [cellClass]="'d-none d-md-inline'"
+            [draggable]="false"
+            [headerClass]="'d-none d-md-inline'"
+            [sortable]="true"
+            name="Role"
+            prop="role"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <!-- Process -->
+          <ngx-datatable-column
+            [cellClass]="'d-none d-md-inline'"
+            [draggable]="false"
+            [headerClass]="'d-none d-md-inline'"
+            [sortable]="true"
+            name="Sign in"
+            prop="process"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>

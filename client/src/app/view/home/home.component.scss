@@ -1,0 +1,38 @@
+.bg-light{
+    background-color: white !important;
+}
+
+.navbar-brand img{
+    width: 110px;
+    height: 50px;
+}
+
+.navbar{
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+    padding: 10px 20px 0px 20px;
+}
+
+.btn-nav{
+    color: rgb(129, 7, 58);
+    font-weight: bold;
+    padding: 20px 15px 20px 15px;
+    border: none;
+    background: transparent;
+}
+
+.btn-nav:hover{
+    border-bottom: 5px solid rgb(255, 230, 1);
+    color:  rgb(255, 230, 1);
+}
+
+.btn-login{
+    color: rgb(129, 7, 58);
+    border: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn-login:hover{
+    color: rgb(206, 157, 111);
+}

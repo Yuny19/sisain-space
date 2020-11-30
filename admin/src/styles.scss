@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import '~ngx-toastr/toastr.css';
+
+.card{
+    margin-top: 2rem;
+}
+
+.card-header{
+    background-color: rgb(41, 110, 138);
+    color: white;
+}
+
+.btn-add{
+    background-color: rgb(30, 161, 155);
+    color: white;
+}
+
+.btn-add:hover{
+    background-color: rgb(244, 247, 246);
+    color: rgb(71, 65, 65);
+}
+
+label.required::after {
+    content: '*';
+    color: #e32;
+    margin-left: 5px;
+  }

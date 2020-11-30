@@ -1,0 +1,134 @@
+<div class="card">
+  <div class="card-header">
+    <div class="clearfix">
+      <span class="float-left font-weight-bold mt-2">
+        Table Product
+      </span>
+      <div class="float-right">
+        <div class="row no-gutters">
+          <button class="btn btn-sm btn-add" routerLink="add" type="button">
+            <i class="fa fa-plus"></i>
+            &nbsp;Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <ngx-datatable
+          #table
+          (page)="getProduct($event.offset + 1)"
+          (sort)="sortTableFn(page, $event); getProduct();"
+          [columnMode]="ColumnMode.force"
+          [count]="totalElements"
+          [externalPaging]="true"
+          [externalSorting]="true"
+          [footerHeight]="50"
+          [headerHeight]="50"
+          [limit]="page.limit"
+          [loadingIndicator]="loadingIndicator"
+          [offset]="offset"
+          [rowHeight]="50"
+          [rows]="rows"
+          [scrollbarH]="true"
+          class="material striped"
+        >
+  
+          <!-- Name -->
+          <ngx-datatable-column
+            [draggable]="false"
+            [sortable]="true"
+            name="Name"
+            prop="name"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <!-- Description -->
+          <ngx-datatable-column
+            [cellClass]="'d-none d-md-inline'"
+            [draggable]="false"
+            [headerClass]="'d-none d-md-inline'"
+            [sortable]="true"
+            name="Description"
+            prop="description"
+            width="20px"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <!-- Price -->
+          <ngx-datatable-column
+            [cellClass]="'d-none d-md-inline'"
+            [draggable]="false"
+            [headerClass]="'d-none d-md-inline'"
+            [sortable]="true"
+            name="Price"
+            prop="price"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+  
+          <!-- Stock -->
+          <ngx-datatable-column
+            [cellClass]="'d-none d-md-inline'"
+            [draggable]="false"
+            [headerClass]="'d-none d-md-inline'"
+            [sortable]="true"
+            name="Stock"
+            prop="stock"
+          >
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{ value  }}
+            </ng-template>
+          </ngx-datatable-column>
+
+          <!-- Action -->
+          <ngx-datatable-column
+              [cellClass]="'d-none d-md-inline'"
+              [draggable]="false"
+              [headerClass]="'d-none d-md-inline'"
+              [sortable]="false"
+              name="Action"
+            >
+              <ng-template
+                let-activeFlag="row.activeFlag"
+                let-id="row._id"
+                ngx-datatable-cell-template
+              >
+                <button
+                  [routerLink]="[id]"
+                  class="btn btn-sm btn-success"
+                  data-placement="bottom"
+                  data-toggle="tooltip"
+                  title="edit"
+                  type="button"
+                >
+                  <i class="fa fa-edit fa-sm"></i>
+                </button>&nbsp;
+                <button
+                  (confirm)="deleted(id)"
+                  [disabled]="activeFlag === 'N'"
+                  class="btn btn-sm btn-danger"
+                  data-placement="bottom"
+                  data-toggle="tooltip"
+                  title="delete"
+                  type="button"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>
