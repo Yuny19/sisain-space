@@ -13,6 +13,8 @@ router.get('/readAll', Product.read);
 
 router.get('/:id', Product.findId);
 
+router.get('/:category', Product.findByCategory);
+
 router.delete('/:id', authent, Product.delete);
 
 module.exports = router;   

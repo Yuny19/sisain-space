@@ -25,7 +25,12 @@
     color:  rgb(255, 230, 1);
 }
 
-.btn-login{
+.btn-nav:focus{
+    border-bottom: 5px solid rgb(255, 230, 1);
+    color:  rgb(255, 230, 1);
+}
+
+.btn-item{
     color: rgb(129, 7, 58);
     border: none;
     background: transparent;
@@ -33,6 +38,6 @@
     font-weight: bold;
 }
 
-.btn-login:hover{
+.btn-item:hover{
     color: rgb(206, 157, 111);
 }

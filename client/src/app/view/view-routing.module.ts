@@ -7,13 +7,13 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: '/dashboard',
+                redirectTo: '/home',
                 pathMatch: 'full'
             },
-            // {
-            //     path: 'home',
-            //     loadChildren: () => import('./dashboard/dashboard.module').then(mod => mod.DashboardModule)
-            // }
+            {
+                path: 'home',
+                loadChildren: () => import('./home-page/home-page.module').then(mod => mod.HomePageModule)
+            }
         ]
     }
 ];

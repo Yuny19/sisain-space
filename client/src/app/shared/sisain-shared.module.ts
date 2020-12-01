@@ -6,12 +6,15 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
+    
   ],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule
+    
   ]
 })
 export class SisainSharedModule {}

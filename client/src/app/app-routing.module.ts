@@ -6,7 +6,13 @@ import { HomeComponent } from './view/home/home.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./view/view.module').then(mod => mod.ViewModule)
+      }
+    ]
   }
 ];
 

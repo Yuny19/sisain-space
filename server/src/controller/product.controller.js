@@ -40,7 +40,7 @@ class ProductController {
                 res.status(404).json(err.message)
             })
     }
-    
+
     static findId(req, res) {
         Product
             .findById(req.params.id)
@@ -68,6 +68,16 @@ class ProductController {
 
     static update(req, res) {
         Product.findByIdAndUpdate(req.params.id, req.body)
+            .then((data) => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                res.status(404).json(err.message)
+            })
+    }
+
+    static findByCategory(req, res) {
+        Product.find({ kategori: req.params.category })
             .then((data) => {
                 res.status(200).json(data)
             })
