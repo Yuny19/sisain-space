@@ -74,6 +74,38 @@ class UserController {
             })
     }
 
+    static loginManual(req, res) {
+        User.findOne({ email: req.body.email.toLowerCase() })
+            .then((data) => {
+
+                if (data.process === 'manual') {
+                    const pass = bcrypt.compareSync(req.body.password, data.password);
+                    if (pass) {
+                        res.status(200).json({
+                            name: data.name,
+                            token: data.token
+                        });
+                    } else {
+                        res.status(403).json({
+                            message: 'not authorized'
+                        })
+                    }
+                } else {
+                    res.status(403).json({
+                        message: "you can't login, try another way"
+
+                    })
+                }
+
+
+            })
+            .catch(err => {
+                res.status(401).json({
+                    message: 'please register'
+                })
+            })
+    }
+
     static loginAdmin(req, res) {
         User.findOne({ email: req.body.email.toLowerCase() })
             .then((data) => {

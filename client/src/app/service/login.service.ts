@@ -9,10 +9,17 @@ import { User } from '../model';
 @Injectable({ providedIn: AppModule })
 export class LoginService {
 
+    url = constant.userURL;
+
     constructor(private http: HttpClient) { }
 
     login(data: any): Observable<User> {
         return this.http.post<User>(
-            `${constant.userURL}/login/google`, data); 
+            `${this.url}/login/google`, data);
+    }
+
+    loginManual(data: any): Observable<User> {
+        return this.http.post<User>(
+            `${this.url}/login/manual`, data);
     }
 } 

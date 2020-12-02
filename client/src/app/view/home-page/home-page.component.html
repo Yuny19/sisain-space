@@ -2,5 +2,16 @@
 <carousel></carousel>
 
 <div class="container">
-    ini isinya nanti
+     <div>
+          <h2 class="title">All Product</h2>
+     </div>
+     <div class="row">
+          <div *ngFor="let product of products">
+               <card-product 
+                    [image]="product.gambar"
+                    [title]="product.name" 
+                    [description]="product.description"
+                    [price]="product.price"></card-product>
+          </div>
+     </div>
 </div>

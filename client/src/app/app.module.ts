@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './view/home/home.component';
 import { SisainSharedModule } from './shared/sisain-shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SisainSharedModule
+    SisainSharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,17 @@
+<div class="main-img">
+    <img src="../../../assets/img/slider/decoration.png" alt="">
+</div>
+<div class="container">
+    <div>
+         <h2 class="title">Products of Choice</h2>
+    </div>
+    <div class="row">
+         <div *ngFor="let product of products">
+              <card-product 
+                   [image]="product.gambar"
+                   [title]="product.name" 
+                   [description]="product.description"
+                   [price]="product.price"></card-product>
+         </div>
+    </div>
+</div>

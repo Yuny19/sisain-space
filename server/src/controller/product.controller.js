@@ -1,4 +1,5 @@
 const Product = require('../model/product.model');
+const Category = require('../model/category.model');
 
 class ProductController {
     static create(req, res) {
@@ -77,8 +78,11 @@ class ProductController {
     }
 
     static findByCategory(req, res) {
-        Product.find({ kategori: req.params.category })
-            .then((data) => {
+        Category.findOne({ name: req.params.category })
+            .then((category) => {
+                return Product.find({kategori:category._id})
+            })
+            .then(data => {
                 res.status(200).json(data)
             })
             .catch(err => {
