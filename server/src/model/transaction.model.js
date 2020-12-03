@@ -3,11 +3,11 @@ const schema = mongoose.Schema;
 const pagination = require('mongoose-paginate');
 
 const transactionSchema = new schema({
-    order: {
+    user: {
         type: schema.Types.ObjectId,
-        ref: 'Orders'
+        ref: 'Users'
     },
-    total: {
+    totalProduct: {
         type: Number
     },
     payment: {
