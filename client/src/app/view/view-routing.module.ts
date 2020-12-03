@@ -16,23 +16,41 @@ const routes: Routes = [
             },
             {
                 path: 'living-room',
-                loadChildren: () => import('./living-room/living-room.module').then(mod => mod.LivingRoomModule)
+                data:{
+                    category : 'living room'
+                },
+                loadChildren: () => import('./content-product/content-product.module').then(mod => mod.ContentProductModule)
             },
             {
                 path: 'bedroom',
-                loadChildren: () => import('./bedroom/bedroom.module').then(mod => mod.BedroomModule)
+                data:{
+                    category : 'bedroom'
+                },
+                loadChildren: () => import('./content-product/content-product.module').then(mod => mod.ContentProductModule)
             },
             {
                 path: 'dining-room',
-                loadChildren: () => import('./dining-room/dining-room.module').then(mod => mod.DiningRoomModule)
+                data:{
+                    category : 'dining room'
+                },
+                loadChildren: () => import('./content-product/content-product.module').then(mod => mod.ContentProductModule)
             },
             {
                 path: 'workspace',
-                loadChildren: () => import('./workspace/workspace.module').then(mod => mod.WorkspaceModule)
-            },
+                data:{
+                    category : 'workspace'
+                },
+                loadChildren: () => import('./content-product/content-product.module').then(mod => mod.ContentProductModule)            },
             {
                 path: 'decoration',
-                loadChildren: () => import('./decoration/decoration.module').then(mod => mod.DecorationModule)
+                data:{
+                    category : 'decoration'
+                },
+                loadChildren: () => import('./content-product/content-product.module').then(mod => mod.ContentProductModule)
+            },
+            {
+                path: 'login',
+                loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule)
             }
         ]
     }

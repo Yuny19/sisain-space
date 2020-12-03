@@ -26,13 +26,21 @@
     </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <button class="btn-item"><i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i></button>
+          <ng-template #popTemplate><div [innerHtml]="html"></div></ng-template>
+            <button 
+              class="btn-item"
+              [routerLink]="['/shopping-cart']"
+              [popover]="popTemplate" 
+              popoverTitle="Your Order"
+              triggers="mouseenter:mouseleave">
+                <i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i>
+            </button>
         </li>
         <li class="nav-item">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-top: 5px;">
         </li>
         <li class="nav-item" *ngIf="!token">
-          <button class="btn-item">Login / Register</button> 
+          <button class="btn-item" (click)="openModalLogin()">Login / Register</button> 
         </li>
       </ul>
   </div>

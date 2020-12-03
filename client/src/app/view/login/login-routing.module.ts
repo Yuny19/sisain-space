@@ -1,15 +1,12 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
-import { DecorationComponent } from './decoration.component';
+import { LoginComponent } from './login.component';
 
 const routes: Routes = [
 
     {
         path: '',
-        data: {
-            category: 'decoration'
-        },
-        component: DecorationComponent
+        component: LoginComponent
     }
 ];
 
@@ -18,4 +15,4 @@ const routes: Routes = [
     exports: [RouterModule],
 })
 
-export class DecorationRoutingModule { }
+export class LoginRoutingModule { }
