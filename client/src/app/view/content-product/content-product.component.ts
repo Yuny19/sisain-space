@@ -12,7 +12,6 @@ export class ContentProductComponent {
 
     products: Product[];
     category: string;
-    url: string;
 
     constructor(private productService: ProductService,
         private activatedRoute: ActivatedRoute) { }
@@ -20,39 +19,28 @@ export class ContentProductComponent {
     ngOnInit() {
         this.category = this.activatedRoute.snapshot.data.category;
 
-        this.getProduct(this.category);
-
-        switch (this.category) {
-            case 'bedroom': {
-                this.url = '../../../assets/img/slider/bedroom.png';
-                break;
-            }
-            case 'living room': {
-                this.url = '../../../assets/img/slider/livingroom.png';
-                break;
-            }
-            case 'dining room': {
-                this.url = '../../../assets/img/slider/diningroom.png';
-                break;
-            }
-            case 'workspace': {
-                this.url = '../../../assets/img/slider/workspace.png';
-                break;
-            }
-            case 'decoration': {
-                this.url = '../../../assets/img/slider/decoration.png';
-                break;
-            }
-            default: {
-                console.log("Invalid choice");
-                break;
-            }
-        }
+        this.productService.getByCategory(this.category).subscribe((data) => {
+            this.products = data;
+        });
     }
 
-    getProduct(category: string) {
-        this.productService.getByCategory(category).subscribe((data) => {
-            this.products = data;
-        })
+    image() {
+        switch (this.category) {
+            case 'bedroom': {
+                return '../../../assets/img/slider/bedroom.png';
+            }
+            case 'living room': {
+                return '../../../assets/img/slider/livingroom.png';
+            }
+            case 'dining room': {
+                return '../../../assets/img/slider/diningroom.png';
+            }
+            case 'workspace': {
+                return '../../../assets/img/slider/workspace.png';
+            }
+            case 'decoration': {
+                return '../../../assets/img/slider/decoration.png';
+            }
+        }
     }
 }
