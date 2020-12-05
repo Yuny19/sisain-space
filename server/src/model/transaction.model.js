@@ -20,6 +20,10 @@ const transactionSchema = new schema({
     expedition: {
         type: schema.Types.ObjectId,
         ref: 'Expeditions'
+    },
+    status: {
+        type: String,
+        default: 'On Progress'
     }
 },
     {

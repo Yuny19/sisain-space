@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
     selector: 'shopping-cart',
@@ -6,4 +6,9 @@ import { Component } from "@angular/core";
     templateUrl: './shopping-cart.component.html'
 })
 
-export class ShoppingCartComponent { }
+export class ShoppingCartComponent implements OnInit{
+
+    ngOnInit(){
+        console.log('hello')
+    }
+ }

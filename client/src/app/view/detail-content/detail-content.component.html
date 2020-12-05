@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <img src="{{ product.gambar }}">
+        </div>
+        <div class="col-md-5">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+
+            <label for="qty">select quantity</label>
+            <div class="quantity">
+                <span class="plus" (click)="add()"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                    <input 
+                        type="number" 
+                        id="qty" 
+                        class="input-text qty text" 
+                        step="1" 
+                        min="0" 
+                        max="" 
+                        name="qty" 
+                        value="{{ qty }}"
+                        size="4" 
+                        pattern="[0-9]*" 
+                        inputmode="numeric" />
+                <span class="minus" (click)="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
+            </div>
+            <div><button>Buy</button></div>
+        </div>
+    </div>
+</div>

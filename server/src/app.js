@@ -1,8 +1,6 @@
 const express = require('express');
 const ENV = require('dotenv');
 const mongoose = require('mongoose');
-const multer = require('multer');
-const upload = multer();
 var bodyParser = require('body-parser');
 
 ENV.config();
@@ -30,7 +28,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //form-urlencoded
 
 // for parsing multipart/form-data
-app.use(upload.array());
 app.use(express.static('public'));
 
 app.use(cors());

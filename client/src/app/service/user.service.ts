@@ -7,13 +7,17 @@ import { User } from '../model';
 
 @Injectable({ providedIn: AppModule })
 
-export class userService {
+export class UserService {
     url = constant.userURL;
 
     constructor(private http: HttpClient) { }
 
     edit(id: string, edited: any): Observable<User> {
         return this.http.put<User>(`${this.url}/${id}`, edited);
+    }
+
+    create(newData: any): Observable<User> {
+        return this.http.post<User>(`${this.url}`, newData);
     }
 
     delete(id: string): Observable<User> {

@@ -2,14 +2,14 @@
     <img src="{{image}}" alt="Card image cap">
     <div class="card-body">
         <div class="content">
-            <h5>{{ title | ellipsis:20 }}</h5> 
+            <h5 routerLink="/product/{{ idProduk }}">{{ title | ellipsis:20 }}</h5> 
             <p>{{ description | ellipsis:70 }}</p>
             <div class="row">
                 <div class="col-sm-8">
                     <h6>{{ price | currency:"Rp ":"symbol" }}</h6>
                 </div>
                 <div class="col-sm-4">
-                    <button value="{{idProduk}}" id="beli" class="btn btn-block btn-outline-danger">Beli</button>
+                    <button value="{{idProduk}}" id="buy" class="btn btn-block btn-outline-danger">Buy</button>
                 </div>
             </div>
         </div>

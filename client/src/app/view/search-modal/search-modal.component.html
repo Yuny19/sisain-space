@@ -1,0 +1,17 @@
+<div class="modal-body">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div>
+       <input class="form-control search" type="search" (keydown.enter)="getSearch($event.target.value)" placeholder="Search" aria-label="Search">
+    </div>
+    <div class="row" *ngFor="let product of products">
+      <div class="col-sm-4 for-img">
+        <img [src]="product.gambar">
+      </div>
+      <div class="col-sm-8">
+        <span>{{ product.name }}</span>
+        <p>{{ product.price | currency:"Rp ":"symbol" }}</p>
+      </div>
+    </div>
+  </div>

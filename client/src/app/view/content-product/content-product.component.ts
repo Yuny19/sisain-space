@@ -16,7 +16,7 @@ export class ContentProductComponent {
     constructor(private productService: ProductService,
         private activatedRoute: ActivatedRoute) { }
 
-    ngOnInit() {
+    ngOnInit() { 
         this.category = this.activatedRoute.snapshot.data.category;
 
         this.productService.getByCategory(this.category).subscribe((data) => {

@@ -1,16 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { Component } from '@angular/core';
 
 
 @Component({
-    templateUrl: './login.component.html' 
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-
-    constructor(){}
-
-    ngOnInit(){
-    }
 }

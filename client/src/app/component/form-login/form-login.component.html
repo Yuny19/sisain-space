@@ -1,0 +1,120 @@
+<tabset>
+  <tab heading="Login">
+    <div class="content">
+      <div class="title">Thank's For Coming Back, login here ^-^</div>
+      <form [formGroup]="formLogin" (ngSubmit)="login()">
+        <fieldset class="form-group">
+          <input
+            class="form-control"
+            formControlName="email"
+            id="email"
+            name="email"
+            required
+            type="text"
+            placeholder="email" 
+          />
+          <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required" class="invalid">
+              Email is required
+            </div>
+          </ng-container>
+        </fieldset>
+        <fieldset class="form-group">
+          <input
+            class="form-control"
+            formControlName="password"
+            id="password"
+            name="password"
+            required
+            type="password"
+            placeholder="password"
+          />
+          <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.errors.required" class="invalid">
+              Password is required
+            </div>
+          </ng-container>
+        </fieldset>
+
+        <div class="float-right">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </tab>
+  <tab heading="Register">
+    <div class="content">
+      <div class="title">Join with Us, You will be happy with what you get ^-^</div>
+      <form [formGroup]="formRegister" (ngSubmit)="register()">
+        <fieldset class="form-group">
+          <input
+            class="form-control"
+            formControlName="name"
+            id="name"
+            name="name"
+            required
+            type="text"
+            placeholder="name" 
+          />
+          <ng-container *ngIf="name.invalid && (name.dirty || name.touched)">
+            <div *ngIf="name.errors.required" class="invalid">
+              Name is required
+            </div>
+          </ng-container>
+        </fieldset>
+        <fieldset class="form-group">
+          <input
+            class="form-control"
+            formControlName="email"
+            id="email"
+            name="email"
+            required
+            type="text"
+            placeholder="email" 
+          />
+          <ng-container *ngIf="reemail.invalid && (reemail.dirty || reemail.touched)">
+            <div *ngIf="reemail.errors.required" class="invalid">
+              Email is required
+            </div>
+          </ng-container>
+        </fieldset>
+        <fieldset class="form-group">
+          <input
+            class="form-control"
+            formControlName="password"
+            id="password"
+            name="password"
+            required
+            type="password"
+            placeholder="password"
+          />
+          <ng-container *ngIf="repassword.invalid && (repassword.dirty || repassword.touched)">
+            <div *ngIf="repassword.errors.required" class="invalid">
+              Password is required
+            </div>
+          </ng-container>
+        </fieldset>
+        <fieldset class="form-group">
+          <input
+            class="form-control"
+            formControlName="copassword"
+            id="copassword"
+            name="copassword"
+            required
+            type="copassword"
+            placeholder="confirm password"
+          />
+          <ng-container *ngIf="copassword.invalid && (copassword.dirty || copassword.touched)">
+            <div *ngIf="copassword.errors.required" class="invalid">
+              Confirm Password is required
+            </div>
+          </ng-container>
+        </fieldset>
+
+        <div class="float-right">
+          <button type="submit">Register</button> 
+        </div>
+      </form>
+    </div>
+  </tab>
+</tabset>

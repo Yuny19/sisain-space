@@ -51,6 +51,14 @@ const routes: Routes = [
             {
                 path: 'login',
                 loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule)
+            },
+            {
+                path: 'shopping-cart',
+                loadChildren: () => import('./shopping-cart/shopping-cart.module').then(mod => mod.ShoppingCartModule) 
+            },
+            {
+                path:'product/:id',
+                loadChildren: () => import('./detail-content/detail-content.module').then(mod => mod.DetailContentModule)
             }
         ]
     }

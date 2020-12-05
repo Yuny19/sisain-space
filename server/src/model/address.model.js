@@ -6,6 +6,9 @@ const addressSchema = new schema({
         type: schema.Types.ObjectId,
         ref: 'Users'
     },
+    name: {
+        type: String
+    },
     detail: {
         type: String
     },

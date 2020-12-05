@@ -22,3 +22,25 @@ h2 {
     margin-bottom: 2rem;
     color: rgb(92, 29, 55);
 }
+
+.nav-link span {
+    color: rgb(43, 2, 37);
+    font-weight: bolder;
+    font-family: "Dancing Script", cursive;
+}
+
+.nav-link.active span {
+    color: rgb(163, 108, 126);
+}
+
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+input.ng-valid {
+    border-color: rgb(128, 74, 96);
+}
+
+.invalid{
+    color: red;
+}

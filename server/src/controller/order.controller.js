@@ -35,6 +35,30 @@ class OrderController {
                 res.status(404).json(err.message);
             })
     }
+
+    static update(req, res) {
+        Order.findByIdAndUpdate(req.params.id, req.body)
+            .then((data) => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                res.status(404).json(err.message)
+            })
+    }
+
+    static delete(req, res) {
+        Order.findByIdAndRemove(req.params.id)
+            .then(() => {
+                res.status(200).json({
+                    message: 'delete successfully'
+                })
+                    .catch(err => {
+                        res.status(404).json({
+                            message: err.message
+                        })
+                    })
+            })
+    }
 }
 
 module.exports = OrderController;

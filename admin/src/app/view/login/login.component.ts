@@ -5,16 +5,12 @@ import { LoginService } from 'src/app/service';
 import { normalizeFlag } from '../../utils/form.util'
 
 
-@Component({
+@Component({ 
     selector: 'login',
     styleUrls: ['./login.component.scss'],
     templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-
-    title = "Join Mediyun";
-    title2 = "No account ? ";
-    title3 = "Create One";
 
     formLogin: FormGroup;
 
@@ -29,18 +25,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() { }
-
-    setTitle() {
-        if (this.title3 == "Create One") {
-            this.title = "Register Mediyun";
-            this.title2 = "Already have account ? ";
-            this.title3 = "Sign in";
-        } else if (this.title3 == "Sign in") {
-            this.title = "Join Mediyun";
-            this.title2 = "No account ? ";
-            this.title3 = "Create One";
-        }
-    }
 
     login() {
         this.loginService.login(normalizeFlag(this.formLogin)).subscribe((result)=>{

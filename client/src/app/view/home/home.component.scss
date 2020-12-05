@@ -53,3 +53,26 @@
     text-align: center;
     margin-top: 4rem;
  }
+
+ .dropdown-menu{
+    background-color:  rgb(221, 212, 218);
+    padding: 0;
+    
+}
+
+
+.dropdown-item{
+    background-color:  rgb(221, 212, 218);
+    color: rgb(110, 5, 70);
+}
+
+.dropdown-item:hover{
+    background-color:   rgb(129, 125, 128);
+    color: white;
+}
+
+@media(max-width: 600px){
+    .row{
+        width: auto;
+    }
+}

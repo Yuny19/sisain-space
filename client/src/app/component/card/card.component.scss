@@ -1,11 +1,11 @@
-.product{
+.product {
     width: 15rem;
     height: 20rem;
     border-radius: 8px;
     margin: 2rem 2rem 2rem 0;
 }
 
-.product img{
+.product img {
     width: 15rem;
     height: 11rem;
     object-fit: cover;
@@ -20,28 +20,37 @@
     background-color: rgb(245, 241, 241);
 }
 
-.card-body{
+.card-body {
     padding: 0;
     margin: 0;
 }
 
-.content{
+.content {
     padding: 0 0.5rem 0.5rem 0.5rem;
 }
 
-.content h5{
+.content h5 {
     margin-bottom: 0;
     color: rgb(161, 25, 107);
 }
 
-.content p{
+.content p {
     margin-top: 0;
     font-size: 12px;
     color: gray;
 }
 
-h6{
+h6 {
     margin-top: 0.5rem;
     color: rgb(192, 9, 9);
     padding-right: 0;
+}
+
+.content h5:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+.content h5:focus{
+    outline: none;
 }

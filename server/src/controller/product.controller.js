@@ -89,6 +89,16 @@ class ProductController {
                 res.status(404).json(err.message)
             })
     }
+
+    static search(req, res){
+        Product.find({name: { $regex: req.params.kata , $options: 'i' } }).limit(5)
+        .then(data=>{
+            res.status(200).json(data)
+        })
+        .catch(err => {
+            res.status(404).json(err.message)
+        })
+    }
 }
 
 module.exports = ProductController;

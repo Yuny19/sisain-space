@@ -63,6 +63,7 @@
               name="gambar"
               required
               type="file"
+              (change)="handleFile($event.target.files)"
             />
             <ng-container *ngIf="isFieldInvalid(form,'gambar')">
               <div *ngIf="form.get('gambar').hasError('required')" class="invalid-feedback">

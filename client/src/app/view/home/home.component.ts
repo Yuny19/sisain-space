@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { SearchModalComponent } from '../search-modal/search-modal.component';
 
 @Component({
     styleUrls: ['./home.component.scss'],
@@ -10,16 +11,22 @@ import { LoginModalComponent } from '../login-modal/login-modal.component';
 export class HomeComponent implements OnInit {
 
     modalRef: BsModalRef | null;
-    token: string;
+    name: string;
     html: string = `<p>nothing shopping list</p>
     <span class="btn-shop">Shop Now</span>`;
 
-    constructor(private bsModalService: BsModalService){}
+    constructor(private bsModalService: BsModalService,
+        private router: Router){}
     ngOnInit() {
-        this.token = localStorage.getItem('token');
+        this.name = localStorage.getItem('name');
     }
 
-    openModalLogin(){
-        this.modalRef = this.bsModalService.show(LoginModalComponent, { class: 'modal-lg' });
+    openModalSearch(){
+        this.modalRef = this.bsModalService.show(SearchModalComponent, { class: 'modal-lg' });
+    }
+
+    logOut() {
+        localStorage.clear();
+        this.router.navigateByUrl('/login');
     }
 }

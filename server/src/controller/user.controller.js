@@ -79,7 +79,7 @@ class UserController {
             .then((data) => {
 
                 if (data.process === 'manual') {
-                    const pass = bcrypt.compareSync(req.body.password, data.password);
+                    const pass = decrypt(req.body.password, data.password);
                     if (pass) {
                         res.status(200).json({
                             name: data.name,

@@ -15,6 +15,10 @@ const orderSchema = new schema({
     },
     totalPay: {
         type: Number
+    },
+    status: {
+        type: String,
+        default: 'cart'
     }
 },
     {

@@ -2,19 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './view/home/home.component';
 import { SisainSharedModule } from './shared/sisain-shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { PopoverModule, ModalModule, TabsModule } from 'ngx-bootstrap';
-import { LoginModalComponent } from './view/login-modal/login-modal.component';
+import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginModalComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,11 +18,9 @@ import { LoginModalComponent } from './view/login-modal/login-modal.component';
     AppRoutingModule,
     SisainSharedModule,
     HttpClientModule,
-    PopoverModule.forRoot(),
-    ModalModule.forRoot(),
-    TabsModule.forRoot()
+    ToastNoAnimationModule,
+    ToastrModule.forRoot() 
   ],
-  entryComponents: [ LoginModalComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })
