@@ -10,6 +10,7 @@ export interface Transaction {
     payment: string,
     address: Address,
     expedition: Expedition,
+    status: string,
     createdAt?: Date,
     updatedAt?: Date
 }

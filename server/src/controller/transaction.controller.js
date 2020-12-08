@@ -2,6 +2,7 @@ const Transaction = require('../model/transaction.model');
 
 class TransactionController {
     static create(req, res) {
+        req.body.user = req.user.id;
         Transaction.create(req.body)
             .then((data) => {
                 res.status(200).json(data)
@@ -13,20 +14,21 @@ class TransactionController {
             })
     }
 
-    static update(req, res){
-        Transaction.findByIdAndUpdate(req.params.id,{
+    static update(req, res) {
+        Transaction.findByIdAndUpdate(req.params.id, {
             $set: {
+                status: req.body.status,
                 payment: req.body.payment
             }
         })
-        .then((data) => {
-            res.status(200).json(data)
-        })
-        .catch(err => {
-            res.status(400).json({
-                message: err.message
+            .then((data) => {
+                res.status(200).json(data)
             })
-        })
+            .catch(err => {
+                res.status(400).json({
+                    message: err.message
+                })
+            })
     }
 
     static read(req, res) {
@@ -48,6 +50,7 @@ class TransactionController {
 
     static readByUser(req, res) {
         Transaction.find({ user: req.user.id })
+            .populate('address')
             .then((data) => {
                 res.status(200).json(data);
             })

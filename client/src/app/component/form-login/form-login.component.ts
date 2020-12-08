@@ -1,11 +1,14 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {Store} from '@ngrx/store'
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { NameInterface } from 'src/app/store/model/name.model';
 import { LoginService, UserService } from '../../service';
 import { normalizeFlag } from '../../utils/form.util';
+import { addName } from 'src/app/store/lib/name.reducer';
 
 @Component({
     selector: 'form-login',
@@ -25,7 +28,8 @@ export class FormLoginComponent implements OnInit {
         public location: Location,
         private router: Router,
         private userService: UserService,
-        private bsModalService: BsModalService
+        private bsModalService: BsModalService,
+        private store: Store<{ nameREducers: NameInterface}>
     ) {
         this.formLogin = formBuilder.group({
             email: new FormControl('', Validators.required),
@@ -35,7 +39,7 @@ export class FormLoginComponent implements OnInit {
             name: new FormControl('', Validators.required),
             email: new FormControl('', Validators.required),
             password: new FormControl('', Validators.required),
-            copassword: new FormControl('', Validators.required)
+            copassword: new FormControl('', Validators.required) 
         });
     }
 
@@ -55,9 +59,9 @@ export class FormLoginComponent implements OnInit {
         }
 
         this.loginService.loginManual(normalizeFlag(this.formLogin)).subscribe((result)=>{
-            localStorage.setItem('name', result.name);
+            this.store.dispatch(addName(result.name));
             localStorage.setItem('token', result.token);
-            location.href="http://localhost:4200/";
+            this.router.navigateByUrl('/home');
             this.toastrService.success('thanks for login');
         })
     }

@@ -15,6 +15,8 @@ router.put('/:id', authent, User.update);
 
 router.get('/', authent, authori, User.read);
 
+router.get('/readByUser', authent, User.readByUser);
+
 router.get('/:id', authent, authori, User.findId);
 
 router.delete('/:id', authent, User.delete);

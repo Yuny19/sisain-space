@@ -1,7 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Observable } from 'rxjs';
+import { NameInterface } from 'src/app/store/model/name.model';
+import {Store} from '@ngrx/store'
 import { SearchModalComponent } from '../search-modal/search-modal.component';
+import { reduceName } from 'src/app/store/lib/name.reducer';
 
 @Component({
     styleUrls: ['./home.component.scss'],
@@ -12,13 +16,18 @@ export class HomeComponent implements OnInit {
 
     modalRef: BsModalRef | null;
     name: string;
-    html: string = `<p>nothing shopping list</p>
-    <span class="btn-shop">Shop Now</span>`;
+    name$: Observable<NameInterface>;
 
     constructor(private bsModalService: BsModalService,
-        private router: Router){}
+        private router: Router,
+        private store: Store<{ nameReducers: NameInterface }>
+        ){
+            this.name$ = this.store.select('nameReducers');
+        }
     ngOnInit() {
-        this.name = localStorage.getItem('name');
+        this.name$.subscribe(async (state: NameInterface) => {
+            this.name =  state.name;
+        })        
     }
 
     openModalSearch(){
@@ -27,6 +36,7 @@ export class HomeComponent implements OnInit {
 
     logOut() {
         localStorage.clear();
-        location.href="http://localhost:4200/";
+        this.store.dispatch(reduceName(null));
+        this.router.navigateByUrl('/home');
     }
 }

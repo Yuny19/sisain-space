@@ -28,4 +28,8 @@ export class TransactionService {
     edit(id: string,newData: any): Observable<Transaction> {
         return this.http.put<Transaction>(`${this.url}/${id}`, newData);
     }
+
+    getByUser() : Observable<Transaction[]>{
+        return this.http.get<Transaction[]>(`${this.url}/readByUser`);
+    }
 }

@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { PopoverModule, ModalModule, TabsModule } from 'ngx-bootstrap';
 import { SearchModalComponent } from '../search-modal/search-modal.component';
 import { FormLoginModule } from 'src/app/component/form-login/form-login.module';
+import { AppStoreModule } from 'src/app/store/store.module';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { FormLoginModule } from 'src/app/component/form-login/form-login.module'
         FormLoginModule,
         PopoverModule.forRoot(),
         ModalModule.forRoot(),
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
+        AppStoreModule
 
     ],
     entryComponents: [

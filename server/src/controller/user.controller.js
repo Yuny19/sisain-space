@@ -152,6 +152,21 @@ class UserController {
             })
     }
 
+    static readByUser(req, res){
+        User.findById( req.user.id )
+            .then((data) => {
+                res.status(200).json({
+                    name: data.name,
+                    email: data.email
+                });
+            })
+            .catch((err) => {
+                res.status(404).json({
+                    message: err.message
+                });
+            })
+    }
+
     static findId(req, res) {
         User
             .findById(req.params.id)

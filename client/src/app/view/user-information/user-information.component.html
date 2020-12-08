@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Profil User</h2>
+    <div class="row profil">
+        <div class="col-sm-3">
+            <div>Name</div>
+            <div>Email</div>
+        </div>
+        <div class="col-sm-7">
+            <div>{{ user?.name }}</div>
+            <div>{{ user?.email }}</div>
+        </div>
+    </div>
+    <hr/>
+    <h2>Transaction</h2>
+    <div class="row" *ngFor="let transaction of transactions">
+        <div class="col sm-4">
+            No.invoice<br>
+            Total product<br>
+            Receiver address<br>
+            Total Payment<br>
+            status
+        </div>
+        <div class="col-sm-8">
+            {{transaction._id}}<br>
+            {{transaction.totalProduct}}<br>
+            {{transaction.address.kabKota}}<br>
+            {{transaction.totalPay | currency:"Rp ":"symbol"}}<br>
+            {{transaction.status}}
+        </div>
+    </div>
+</div>
