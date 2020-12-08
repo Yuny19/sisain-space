@@ -1,15 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-7">
-            <img src="{{ product.gambar }}">
+            <img [src]="product?.gambar">
         </div>
         <div class="col-md-5">
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
+            <h2>{{ product?.name }}</h2>
+            <p>{{ product?.description }}</p>
 
             <label for="qty">select quantity</label>
             <div class="quantity">
-                <span class="plus" (click)="add()"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                <span class="plus" (click)="add()"><i class="fa fa-plus"></i></span>
                     <input 
                         type="number" 
                         id="qty" 
@@ -22,9 +22,9 @@
                         size="4" 
                         pattern="[0-9]*" 
                         inputmode="numeric" />
-                <span class="minus" (click)="minus()"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                <span class="minus" (click)="minus()"><i class="fa fa-minus"></i></span>
             </div>
-            <div><button>Buy</button></div>
+            <div><button (click)="addOrder()">Buy</button></div>
         </div>
     </div>
 </div>

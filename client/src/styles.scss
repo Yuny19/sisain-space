@@ -1,4 +1,5 @@
 @import "~ngx-toastr/toastr.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 button:focus {
     outline: none;
@@ -43,4 +44,10 @@ input.ng-valid {
 
 .invalid{
     color: red;
+}
+
+label.required::after {
+    content: '*';
+    color: #e32;
+    margin-left: 5px;
 }

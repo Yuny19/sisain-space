@@ -61,15 +61,15 @@ class ExpeditionController {
                     })
             })
     }
-    
-    static findId(req, res){
+
+    static findId(req, res) {
         Expedition.findById(req.params.id)
-        .then((data) => {
-            res.status(200).json(data)
-        })
-        .catch((err) => {
-            res.status(404).json(err.message);
-        })
+            .then((data) => {
+                res.status(200).json(data)
+            })
+            .catch((err) => {
+                res.status(404).json(err.message);
+            })
     }
 
     static update(req, res) {
@@ -82,34 +82,54 @@ class ExpeditionController {
             })
     }
 
-    static getProvince(req, res){
+    static getProvince(req, res) {
         ExpeditionAPI('province')
-        .then(({data})=>{
-            res.status(200).json(data.rajaongkir.results)
-        })
-        .catch(err=>{
-            res.status(404).json(err.message)
-        })
+            .then(({ data }) => {
+                res.status(200).json(data.rajaongkir.results)
+            })
+            .catch(err => {
+                res.status(404).json(err.message)
+            })
     }
 
-    static getCity(req, res){
-        ExpeditionAPI('city')
-        .then(({data})=>{
-            res.status(200).json(data.rajaongkir.results)
+    static getProvinceById(req, res) {
+        ExpeditionAPI('province', {
+            params: {
+                id: req.params.provinceId
+            }
         })
-        .catch(err=>{
-            res.status(404).json(err.message)
-        })
+            .then(({ data }) => {
+                res.status(200).json(data.rajaongkir.results)
+            })
+            .catch(err => {
+                res.status(404).json(err.message)
+            })
     }
 
-    static getCost(req, res){
-        ExpeditionAPI('cost?origin='+req.params.origin+'&destination='+req.params.destination+'&courier='+req.params.courier+'&weight=1700')
-        .then(({data})=>{
-            res.status(200).json(data)
+    static getCity(req, res) {
+        ExpeditionAPI(`city`, {
+            params: {
+                province: req.params.provinceid
+            }
         })
-        .catch(err=>{
-            res.status(404).json(err.message)
-        })
+            .then(({ data }) => {
+                res.status(200).json(data.rajaongkir.results)
+            })
+            .catch(err => {
+                res.status(404).json(err.message)
+            })
+    }
+
+    static getCost(req, res) {
+        req.body.weight = 1000;
+
+        ExpeditionAPI.post('cost', req.body)
+            .then(({ data }) => {
+                res.status(200).json(data.rajaongkir.results)
+            })
+            .catch(err => {
+                res.status(404).json(err.message)
+            })
     }
 }
 

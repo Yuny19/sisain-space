@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
+import { AuthGuard } from '../guard/auth.guard';
 
 const routes: Routes = [
     {
@@ -53,12 +54,23 @@ const routes: Routes = [
                 loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule)
             },
             {
-                path: 'shopping-cart',
+                path: 'shopping-cart', 
+                canActivate:[AuthGuard],
                 loadChildren: () => import('./shopping-cart/shopping-cart.module').then(mod => mod.ShoppingCartModule) 
             },
             {
                 path:'product/:id',
                 loadChildren: () => import('./detail-content/detail-content.module').then(mod => mod.DetailContentModule)
+            },
+            {
+                path: 'payment/:id', 
+                canActivate:[AuthGuard],
+                loadChildren: () => import('./payment/payment.module').then(mod => mod.PaymentModule)
+            },
+            {
+                path: 'user-info', 
+                canActivate:[AuthGuard],
+                loadChildren: () => import('./user-information/user-information.module').then(mod => mod.UserInformationModule)
             }
         ]
     }

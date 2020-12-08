@@ -12,21 +12,30 @@ export class ExpeditionService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(): Observable<Array<Expedition>> {
-        return this.http.get<Array<Expedition>>(`${this.url}/readAll`);
+    getAll(): Observable<Expedition[]> {
+        return this.http.get<Expedition[]>(`${this.url}/readAll`);
     }
 
-    getProvince(): Observable<Array<Expedition>> {
-        return this.http.get<Array<Expedition>>(
+    getProvince(): Observable<any[]> {
+        return this.http.get<any[]>(
             `${this.url}/province`);
     }
 
-    getCity(province: string): Observable<Array<Expedition>> {
-        return this.http.get<Array<Expedition>>(
-            `${this.url}/city`,
-            {
-                params: { province: province }
-            }
-        );
+    getProvinceById(provId: string): Observable<any> {
+        return this.http.get<any>(
+            `${this.url}/province/${provId}`);
+    }
+
+    getCity(province: string): Observable<any[]> {
+        return this.http.get<any[]>(
+            `${this.url}/city/${province}`);
+    }
+
+    getCost(data: any): Observable<any[]>{
+        return this.http.post<any[]>(`${this.url}/cost`, data);
+    }
+
+    get(id: string): Observable<Expedition>{
+        return this.http.get<Expedition>(`${this.url}/${id}`);
     }
 }

@@ -8,6 +8,8 @@ router.put('/:id', Order.update);
 
 router.get('/', authent, Order.read);
 
+router.get('/user', authent, Order.readByUser);
+
 router.get('/:id', authent, Order.findId);
 
 router.delete('/:id', Order.delete);

@@ -2,6 +2,8 @@ const Address = require('../model/address.model');
 
 class AddressController {
     static create(req, res) {
+        req.body.user = req.user.id;
+        
         Address.create(req.body)
             .then((data) => {
                 res.status(200).json(data)

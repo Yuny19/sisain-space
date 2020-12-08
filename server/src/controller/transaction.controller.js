@@ -13,6 +13,22 @@ class TransactionController {
             })
     }
 
+    static update(req, res){
+        Transaction.findByIdAndUpdate(req.params.id,{
+            $set: {
+                payment: req.body.payment
+            }
+        })
+        .then((data) => {
+            res.status(200).json(data)
+        })
+        .catch(err => {
+            res.status(400).json({
+                message: err.message
+            })
+        })
+    }
+
     static read(req, res) {
         const { page, limit } = req.query;
         const options = {

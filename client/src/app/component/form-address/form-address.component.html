@@ -1,0 +1,102 @@
+<div class="modal-body">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+<div class="card-body">
+   <form 
+    [formGroup]="form" (ngSubmit)="onSubmit()">
+    <fieldset class="form-group">
+        <label class="col-form-label required" for="name">Name</label>
+        <input
+          class="form-control"
+          formControlName="name"
+          id="name"
+          name="name"
+          required
+          type="text"
+          placeholder="ex. alamat rumah, alamat kantor"
+        />
+        <ng-container *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors.required" class="invalid">
+            Name is required
+          </div>
+        </ng-container>
+    </fieldset>
+    <fieldset>
+        <label class="col-form-label required" for="provinsi">Provinsi</label>
+        <ng-select 
+          [items]="provinces"
+          bindLabel="province"
+          bindValue="province_id"
+          placeholder="Select provinsi"
+          formControlName="provinsi"
+          required
+          (change)="getCity($event)">
+        </ng-select>
+    </fieldset>
+    <fieldset>
+        <label class="col-form-label required" for="kabkota">Kab/Kota</label>
+        <ng-select 
+          [items]="cities"
+          bindLabel="city_name"
+          bindValue="city_name"
+          placeholder="Select kab/kota"
+          formControlName="kabKota"
+          required>
+        </ng-select>
+    </fieldset>
+    <fieldset class="form-group">
+        <label class="col-form-label required" for="kecamatan">Kecamatan</label>
+        <input
+          class="form-control"
+          formControlName="kecamatan"
+          id="kecamatan"
+          name="kecamatan"
+          required
+          type="text"
+        />
+        <ng-container *ngIf="kecamatan.invalid && (kecamatan.dirty || kecamatan.touched)">
+          <div *ngIf="kecamatan.errors.required" class="invalid">
+            Kecamatan is required
+          </div>
+        </ng-container>
+    </fieldset>
+    <fieldset class="form-group">
+        <label class="col-form-label required" for="kodepos">Kodepos</label>
+        <input
+          class="form-control"
+          formControlName="kodepos"
+          id="kodepos"
+          name="kodepos"
+          required
+          type="text"
+        />
+        <ng-container *ngIf="kodepos.invalid && (kodepos.dirty || kodepos.touched)">
+          <div *ngIf="kodepos.errors.required" class="invalid">
+            Kodepos is required
+          </div>
+        </ng-container>
+    </fieldset>
+    <fieldset class="form-group">
+        <label class="col-form-label required" for="detail">Detail</label>
+        <input
+          class="form-control"
+          formControlName="detail"
+          id="detail"
+          name="detail"
+          required
+          type="text"
+          placeholder="ex. no rumah, nama jalan, rt/rw" 
+        />
+        <ng-container *ngIf="detail.invalid && (detail.dirty || detail.touched)">
+          <div *ngIf="detail.errors.required" class="invalid">
+            Detail is required
+          </div>
+        </ng-container>
+    </fieldset>
+    <div class="float-right">
+        <button class="btn btn-primary">Save</button>
+    </div>
+   </form>
+</div>
+</div>

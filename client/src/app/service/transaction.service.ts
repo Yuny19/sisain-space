@@ -24,4 +24,8 @@ export class TransactionService {
     add(newData: any): Observable<Transaction> {
         return this.http.post<Transaction>(`${this.url}`, newData);
     }
+
+    edit(id: string,newData: any): Observable<Transaction> {
+        return this.http.put<Transaction>(`${this.url}/${id}`, newData);
+    }
 }

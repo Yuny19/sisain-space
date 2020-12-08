@@ -5,6 +5,8 @@ const authori = require('../middleware/authorization');
 
 router.post('/', authent, Transaction.create);
 
+router.put('/:id', authent, Transaction.update);
+
 router.get('/', authent, authori, Transaction.read);
 
 router.get('/readByUser', authent, Transaction.readByUser);

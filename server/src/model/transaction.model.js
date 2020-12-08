@@ -7,7 +7,13 @@ const transactionSchema = new schema({
         type: schema.Types.ObjectId,
         ref: 'Users'
     },
+    namaPenerima: {
+        type: String
+    },
     totalProduct: {
+        type: Number
+    },
+    totalPay: {
         type: Number
     },
     payment: {

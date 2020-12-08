@@ -4,8 +4,10 @@ import { User } from './user.model';
 export interface Order {
     _id: string,
     user: User,
-    orders: Product[],
+    product: Product,
+    total: number,
     totalPay: number,
+    statusOrder: string,
     createdAt?: Date,
     updatedAt?: Date
 }

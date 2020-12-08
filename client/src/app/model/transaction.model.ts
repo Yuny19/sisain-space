@@ -5,7 +5,8 @@ import { Order } from './order.model';
 export interface Transaction {
     _id: string,
     order: Order,
-    total: number,
+    totalProduct: number,
+    totalPay: number,
     payment: string,
     address: Address,
     expedition: Expedition,

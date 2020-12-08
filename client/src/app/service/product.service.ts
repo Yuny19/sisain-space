@@ -14,12 +14,12 @@ export class ProductService {
         return this.http.get<Product>(`${this.url}/${id}`);
     }
 
-    getAll(): Observable<Array<Product>> {
-        return this.http.get<Array<Product>>(`${this.url}/readAll`);
+    getAll(): Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.url}/readAll`);
     }
 
     getByCategory(category: string): Observable<Array<Product>> {
-        return this.http.get<Array<Product>>(`${this.url}/category/${category}`)
+        return this.http.get<Array<Product>>(`${this.url}/category/${category}`);
     }
 
     search(keyword: string): Observable<Array<Product>>{

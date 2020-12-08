@@ -25,13 +25,13 @@
       </li>
     </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="!name">
+        <li class="nav-item" *ngIf="!name"> 
           <button class="btn-item" [routerLink]="['/login']">Login / Register</button> 
         </li>
         <li class="nav-item dropdown" *ngIf="name">
           <button class="btn-item dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i>{{ name }}</button>  
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/manage-user']" >Manage User</a>
+            <a class="dropdown-item" [routerLink]="['/user-info']" >Your Information</a>
             <a class="dropdown-item" (click)="logOut()">Log Out</a>
           </div>
         </li>

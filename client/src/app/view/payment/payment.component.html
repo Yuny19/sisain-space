@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="form">
+            <h5 style="margin-bottom: 2rem; margin-top: 1rem;">Choose your payment method : </h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment" formControlName="payment" id="pay1" value="ovo" checked>
+                <label class="form-check-label" for="pay1">
+                  Ovo
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment" formControlName="payment" id="pay2" value="gopay">
+                <label class="form-check-label" for="pay2">
+                  Gopay
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment" formControlName="payment" id="pay3" value="virtualaccount">
+                <label class="form-check-label" for="pay3">
+                  Virtual Account
+                </label>
+            </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <h3>Ringkasan Order</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        SubTotal <br>
+                        Ongkos Kirim 
+                    </div>
+                    <div class="col-sm-6">
+                        {{ subTotal | currency:"Rp ":"symbol" }} <br>
+                        {{ ongkir  | currency:"Rp ":"symbol" }}
+                        
+                    </div>
+                </div>
+                <div class="btn-out">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5>Total</h5>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>{{ transactions?.totalPay | currency:"Rp ":"symbol"}}</h5>
+                        </div>
+                    </div>
+                    <button class="btn btn-block btn-danger" (click)="payNow()">Pay Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

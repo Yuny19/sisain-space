@@ -27,6 +27,6 @@ export class HomeComponent implements OnInit {
 
     logOut() {
         localStorage.clear();
-        this.router.navigateByUrl('/login');
+        location.href="http://localhost:4200/";
     }
 }

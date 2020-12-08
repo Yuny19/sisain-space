@@ -10,7 +10,16 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(req, next) {
     let authService = this.injector.get(AuthService);
-    if (req.url === `${constant.userURL}/login/google`) {
+    if (req.url === `${constant.userURL}/login/manual`) {
+      return next.handle(req);
+    } 
+    else if (req.url === `${constant.productURL}/readAll`) {
+      return next.handle(req);
+    } 
+    else if (req.url === `${constant.productURL}/search/:kata`) {
+      return next.handle(req);
+    } 
+    else if (req.url === `${constant.productURL}/:id`) {
       return next.handle(req);
     } 
     else {

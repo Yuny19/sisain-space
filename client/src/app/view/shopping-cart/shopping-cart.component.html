@@ -1,0 +1,138 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <a 
+                        class="float-right" 
+                        (click)="addOrder()">
+                        add Order <i class="fa fa-plus" aria-hidden="true"></i>
+                </a>
+                <table class="table">
+                    <thead>
+                        <th style="width: 60%;">Product</th>
+                        <th style="width: 20%;">Price</th>
+                        <th style="width: 20%;">Qty</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders">
+                            <td style="width: 60%;">{{order.product.name }}</td>
+                            <td style="width: 20%;">{{ order.product.price | currency:"Rp ":"symbol" }}</td>
+                            <td style="width: 20%;">
+                                <div class="quantity">
+                                    <span class="minus" (click)="minus(order._id, order.total, order.product.price)">
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                    </span>
+                                    <input 
+                                        type="number" 
+                                        id="qty" 
+                                        class="input-text qty text" 
+                                        step="1" 
+                                        min="0" 
+                                        max=""
+                                        name="qty" 
+                                        value="{{ order.total }}"
+                                        size="4" 
+                                        pattern="[0-9]*"
+                                        inputmode="numeric" />
+                                    <span class="plus" (click)="add(order._id, order.total, order.product.price)">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <form [formGroup]="formCheckout" (ngSubmit)="checkout()">
+        <div class="row">
+            <div class="col-md-7" style="margin-right: 4rem;">
+                <fieldset class="form-group">
+                    <label class="col-form-label required" for="namaPenerima">Nama Penerima</label>
+                    <input 
+                        class="form-control" 
+                        formControlName="namaPenerima" 
+                        id="namaPenerima" 
+                        name="namaPenerima" 
+                        required 
+                        type="text" />
+                        <ng-container *ngIf="namePenerima.invalid && (namePenerima.dirty || namePenerima.touched)">
+                            <div *ngIf="namePenerima.errors.required" class="invalid">
+                              Nama Penerima is required
+                            </div>
+                          </ng-container>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label class="col-form-label required" for="address">Alamat Pengiriman</label>
+                    <a 
+                        class="float-right" 
+                        (click)="openModalAddress()">
+                        add address <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
+                    <textarea 
+                        class="form-control" 
+                        id="address" 
+                        name="address" 
+                        rows="3"
+                        formControlName="address"
+                        placeholder="please add address"
+                        readonly>
+                    </textarea>
+                    <ng-container *ngIf="addres.invalid && (addres.dirty || addres.touched)">
+                        <div *ngIf="addres.errors.required" class="invalid">
+                          Address is required
+                        </div>
+                      </ng-container>
+                </fieldset>
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h3>Ringkasan Order</h3>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            SubTotal <br>
+                            Ongkos Kirim <br>
+                            Estimasi Ongkir
+                        </div>
+                        <div class="col-sm-6">
+                            {{ subTotal | currency:"Rp ":"symbol" }} <br>
+                            {{ ongkir | currency:"Rp ":"symbol" }}<br>
+                            {{ estimasi }} hari
+                        </div>
+                    </div>
+                    <div class="btn-out">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5>Total</h5>
+                            </div>
+                            <div class="col-sm-6">
+                                <h6>{{totalPay | currency:"Rp ":"symbol"}}</h6>
+                            </div>
+                        </div>
+                        <button class="btn btn-block btn-danger">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        <div class="row">
+            <div class="col-md-3">
+                <fieldset>
+                    <label class="col-form-label required" for="courier">Courier</label>
+                    <ng-select 
+                        [items]="courier" 
+                        bindLabel="name" 
+                        bindValue="_id" 
+                        placeholder="Select courier"
+                        required 
+                        (change)="setOngkir($event)">
+                    </ng-select>
+                    <ng-container *ngIf="courir.invalid && (courir.dirty || courir.touched)">
+                        <div *ngIf="courir.errors.required" class="invalid">
+                          Courir is required
+                        </div>
+                      </ng-container>
+                </fieldset>
+            </div>
+        </div>
+</div>

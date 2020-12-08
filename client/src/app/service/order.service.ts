@@ -31,4 +31,8 @@ export class OrderService {
     delete(id: string): Observable<Order> {
         return this.http.delete<Order>(`${this.url}/${id}`);
     }
+
+    getByUser(): Observable<Order[]>{
+        return this.http.get<Order[]>(`${this.url}/user`)
+    }
 }

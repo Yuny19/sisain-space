@@ -57,7 +57,7 @@ export class FormLoginComponent implements OnInit {
         this.loginService.loginManual(normalizeFlag(this.formLogin)).subscribe((result)=>{
             localStorage.setItem('name', result.name);
             localStorage.setItem('token', result.token);
-            this.location.back();
+            location.href="http://localhost:4200/";
             this.toastrService.success('thanks for login');
         })
     }

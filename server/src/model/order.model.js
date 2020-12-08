@@ -11,12 +11,13 @@ const orderSchema = new schema({
         ref: 'Products'
     },
     total: {
-        type: Number
+        type: Number,
+        default: 1
     },
     totalPay: {
         type: Number
     },
-    status: {
+    statusOrder: {
         type: String,
         default: 'cart'
     }

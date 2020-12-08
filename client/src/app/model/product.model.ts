@@ -7,5 +7,5 @@ export interface Product {
     stock: number,
     kategori: string,
     createdAt?: Date,
-    updatedAt?: Date
+    updatedAt?: Date 
 }

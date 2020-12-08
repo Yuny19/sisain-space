@@ -9,7 +9,7 @@
                     <h6>{{ price | currency:"Rp ":"symbol" }}</h6>
                 </div>
                 <div class="col-sm-4">
-                    <button value="{{idProduk}}" id="buy" class="btn btn-block btn-outline-danger">Buy</button>
+                    <button (click)="addOrder()" id="buy" class="btn btn-block btn-outline-danger">Buy</button>
                 </div>
             </div>
         </div>

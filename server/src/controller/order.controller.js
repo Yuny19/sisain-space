@@ -1,8 +1,21 @@
 const Order = require('../model/order.model');
+const Product = require('../model/product.model');
 
 class OrderController {
     static create(req, res) {
-        Order.create(req.body)
+      
+        req.body.user = req.user.id;
+        if (req.body.total == null) {
+            req.body.total = 1;
+        }
+
+
+        Product.findById(req.body.product)
+            .then((data) => {
+                console.log(data)
+                req.body.totalPay = req.body.total * data.price;
+                return Order.create(req.body);
+            })
             .then((data) => {
                 res.status(200).json(data)
             })
@@ -37,7 +50,14 @@ class OrderController {
     }
 
     static update(req, res) {
-        Order.findByIdAndUpdate(req.params.id, req.body)
+        Order.findByIdAndUpdate(req.params.id,{
+
+            $set:{
+                statusOrder : req.body.statusOrder,
+                total: req.body.total,
+                totalPay: req.body.totalPay
+            }
+        })
             .then((data) => {
                 res.status(200).json(data)
             })
@@ -57,6 +77,17 @@ class OrderController {
                             message: err.message
                         })
                     })
+            })
+    }
+
+    static readByUser(req, res) {
+        Order.find().and([{ user: req.user.id }, { statusOrder: 'cart' }])
+        .populate('product')
+            .then((data) => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
+                res.status(404).json(err.message)
             })
     }
 }
