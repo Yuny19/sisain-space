@@ -1,3 +1,3 @@
 export interface NameInterface{
-    name: string;
+    name: string
 }

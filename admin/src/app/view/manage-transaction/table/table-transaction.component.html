@@ -28,12 +28,12 @@
           class="material striped"
         >
   
-          <!-- Order -->
+          <!-- Invoice -->
           <ngx-datatable-column
             [draggable]="false"
             [sortable]="true"
-            name="Order"
-            prop="order._id"
+            name="Invoice"
+            prop="_id"
           >
             <ng-template let-value="value" ngx-datatable-cell-template>
               {{ value  }}
@@ -46,8 +46,8 @@
             [draggable]="false"
             [headerClass]="'d-none d-md-inline'"
             [sortable]="true"
-            name="Total"
-            prop="total"
+            name="Total Product"
+            prop="totalProduct"
           >
             <ng-template let-value="value" ngx-datatable-cell-template>
               {{ value  }}
@@ -74,8 +74,8 @@
             [draggable]="false"
             [headerClass]="'d-none d-md-inline'"
             [sortable]="true"
-            name="Address"
-            prop="address.kabKota"
+            name="Status"
+            prop="status"
           >
             <ng-template let-value="value" ngx-datatable-cell-template>
               {{ value  }}

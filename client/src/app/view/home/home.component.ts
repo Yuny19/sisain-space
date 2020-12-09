@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
-import { NameInterface } from 'src/app/store/model/name.model';
-import {Store} from '@ngrx/store'
+import { NameInterface } from '../../store/model/name.model';
+import {Store} from '@ngrx/store';
 import { SearchModalComponent } from '../search-modal/search-modal.component';
-import { reduceName } from 'src/app/store/lib/name.reducer';
+import { reduceName } from '../../store/lib/name.reducer';
 
 @Component({
     styleUrls: ['./home.component.scss'],
@@ -16,16 +16,16 @@ export class HomeComponent implements OnInit {
 
     modalRef: BsModalRef | null;
     name: string;
-    name$: Observable<NameInterface>;
+    login$: Observable<NameInterface>;
 
     constructor(private bsModalService: BsModalService,
         private router: Router,
         private store: Store<{ nameReducers: NameInterface }>
         ){
-            this.name$ = this.store.select('nameReducers');
+            this.login$ = this.store.select('nameReducers');
         }
     ngOnInit() {
-        this.name$.subscribe(async (state: NameInterface) => {
+        this.login$.subscribe(async (state: NameInterface) => {
             this.name =  state.name;
         })        
     }

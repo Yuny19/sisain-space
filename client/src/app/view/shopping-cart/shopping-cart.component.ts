@@ -4,10 +4,13 @@ import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { FormAddressComponent } from '../../component/form-address/form-address.component';
-import { Address, Expedition, Order } from '../../model';
+import { Expedition, Order } from '../../model';
 import { ExpeditionService, OrderService, TransactionService } from '../../service';
 import { AddressService } from '../../service/address.service';
 import { normalizeFlag } from '../../utils/form.util';
+
+//import swal
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'shopping-cart',
@@ -127,13 +130,6 @@ export class ShoppingCartComponent implements OnInit {
         this.totalPay = this.totalPay + this.ongkir;
     }
 
-    deleteCart(id: string) {
-        this.orderService.delete(id).subscribe();
-        this.orderService.getByUser().subscribe((data) => {
-            this.setOrders(data);
-        });
-    }
-
     //add total product in cart
     add(id: string, total: number, price: number) {
         total = total + 1;
@@ -154,17 +150,45 @@ export class ShoppingCartComponent implements OnInit {
         total = total - 1;
 
         if (total == 0) {
+            // const swalWithBootstrapButtons = Swal.mixin({
+            //     customClass: {
+            //         confirmButton: 'btn btn-success',
+            //         cancelButton: 'btn btn-secondary'
+            //     },
+            //     buttonsStyling: false
+            // })
 
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete order?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    this.orderService.delete(id).subscribe();
+                    this.orderService.getByUser().subscribe((data) => {
+                        this.setOrders(data);
+                    });
+                    Swal.fire(
+                        'Deleted!',
+                        'Your order has been deleted.',
+                        'success'
+                    )
+                }
+            });
+        } else {
+            let pay = total * price;
+
+            this.formOrder.get('totalPay').setValue(pay);
+            this.formOrder.get('total').setValue(total);
+            this.orderService.edit(id, normalizeFlag(this.formOrder)).subscribe();
+            this.orderService.getByUser().subscribe((data) => {
+                this.setOrders(data);
+            });
         }
-
-        let pay = total * price;
-
-        this.formOrder.get('totalPay').setValue(pay);
-        this.formOrder.get('total').setValue(total);
-        this.orderService.edit(id, normalizeFlag(this.formOrder)).subscribe();
-        this.orderService.getByUser().subscribe((data) => {
-            this.setOrders(data);
-        });
     }
 
     setOrders(orders: Order[]) {

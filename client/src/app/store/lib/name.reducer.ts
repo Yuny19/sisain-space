@@ -1,7 +1,7 @@
 import { NameInterface } from '../model/name.model';
 
-const ADD_NAME = 'add_name';
-const REDUCE_NAME = 'reduce_name';
+const ADD_DATA = 'add_data';
+const REDUCE_DATA = 'reduce_data';
 
 export const initialState = {
     name: null
@@ -9,12 +9,12 @@ export const initialState = {
 
 export function nameReducers(state: NameInterface = initialState, action) {
     switch (action.type) {
-        case ADD_NAME:
+        case ADD_DATA:
             return {
                 ...state,
                 name: action.payload
             }
-        case REDUCE_NAME:
+        case REDUCE_DATA:
             return {
                 ...state,
                 name: null
@@ -25,11 +25,11 @@ export function nameReducers(state: NameInterface = initialState, action) {
 }
 
 export const addName = (payload) => ({
-    type: ADD_NAME,
+    type: ADD_DATA,
     payload: payload
 });
 
 export const reduceName = (payload) =>({
-    type: REDUCE_NAME,
+    type: REDUCE_DATA,
     payload: payload
 });

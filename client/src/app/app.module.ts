@@ -9,6 +9,7 @@ import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 import { AuthService } from './lib/service/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { TokenInterceptorService } from './lib/service/token-interceptor.service';
+import { AppStoreModule } from './store/store.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TokenInterceptorService } from './lib/service/token-interceptor.service
     SisainSharedModule,
     HttpClientModule,
     ToastNoAnimationModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AppStoreModule
   ],
   providers: [AuthService, AuthGuard,
     {

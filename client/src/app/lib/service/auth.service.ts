@@ -6,10 +6,10 @@ export class AuthService {
   constructor() { }
 
   getToken() {
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
   }
 
   loggedIn() {
-    return !!localStorage.getItem('token')    
+    return !!localStorage.getItem('token');
   }
 }

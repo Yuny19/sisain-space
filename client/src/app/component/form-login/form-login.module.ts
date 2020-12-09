@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { SisainSharedModule } from '../../shared/sisain-shared.module';
 import { FormLoginComponent } from './form-login.component';
 import { TabsModule } from 'ngx-bootstrap';
+import { FormUserModule } from '../form-user/form-user.module';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import { TabsModule } from 'ngx-bootstrap';
     ],
     imports: [
         SisainSharedModule,
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
+        FormUserModule
     ]
 })
 export class FormLoginModule { }

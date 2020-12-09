@@ -37,7 +37,7 @@ class TransactionController {
             page: parseInt(page, 10) || 1,
             limit: parseInt(limit, 10) || 10,
         };
-        Transaction.paginate({}, options)
+        Transaction.paginate({}, options)          
             .then((data) => {
                 res.status(200).json(data);
             })
